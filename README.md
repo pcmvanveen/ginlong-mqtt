@@ -1,6 +1,6 @@
 # Overview
  
-This is a daemon that will listen on a port for connections from a Ginlong Solar Inverter. Currently tested with a Solis 4G Mini Single Phase Inverter (Solis-mini-1500-4G)
+This is a daemon that will listen on a port for connections from a Ginlong Solar Inverter. Currently tested with a Solis 4G single Phase Inverter (Solis-mini-1500-4G firmware version H4.01.51Y4.0.02W1.0.57 (2017-12-211-D)
 
 Many thanks go to Graham0 and his script for an older version. https://github.com/graham0/ginlong-wifi
 
@@ -16,14 +16,16 @@ You will need a system running python with the following modules:
 * time
 * sys
 * string
+* influxdb
 
 You will also need a running MQTT server.
+To store values in the database you need a running influxDB server(version 1.4 or higher is recomended)
 
 
 # Setup
 
 1. Log into the monitoring device, and configure the second IP option to point to the server that this daemon is running on. (Daemon defaults to port 9999)
-2. Make sure that the MQTT settings are correct in the daemon.
+2. Make sure that the MQTT and influxd settings are correct in the daemon (config.ini file).
 3. Start the daemon
 4. Add the following to your OpenHAB items (Replace XXXXXXXXXX with the serial number of your inverter)
 ```
