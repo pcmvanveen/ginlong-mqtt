@@ -25,7 +25,7 @@ To store values in the database you need a running influxDB server(version 1.4 o
 # Setup
 
 1. Log into the monitoring device, and configure the second IP option to point to the server that this daemon is running on. (Daemon defaults to port 9999)
-2. Make sure that the MQTT and influxd settings are correct in the daemon (config.ini file).
+2. Make sure that the MQTT and INFLUXDB settings are correct in the daemon (config.ini file).
 3. Start the daemon
 4. Add the following to your OpenHAB items (Replace XXXXXXXXXX with the serial number of your inverter)
 ```
