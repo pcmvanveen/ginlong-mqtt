@@ -43,11 +43,11 @@ listen_port = int(config.get('DEFAULT', 'listen_port')) # Port to listen on
 client_id = config.get('MQTT', 'client_id') # MQTT Client ID
 mqtt_server = config.get('MQTT', 'mqtt_server') # MQTT Address
 mqtt_port = int(config.get('MQTT', 'mqtt_port')) # MQTT Port
-influx_server = config.get('INFLUX', 'influxdb_server') # Ifluxdb server adress
-influx_port = int(config.get('INFLUX', 'influxdb_port') # Influxdb port
-influx_db = config.get('INFLUX', 'influxdb_databasename') # influxdb name
-influx_user = config.get('INFLUX', 'influxdb_user') # influxdb gebruikersnaam
-influx_passwd = config.get('INFLUX', 'influxdb_password') # influxdb login
+influx_server = config.get('INFLUXDB', 'influxdb_server') # Ifluxdb server adress
+influx_port = int(config.get('INFLUXDB', 'influxdb_port')) # Influxdb port
+influx_db = config.get('INFLUXDB', 'influxdb_databasename') # influxdb name
+influx_user = config.get('INFLUXDB', 'influxdb_user') # influxdb gebruikersnaam
+influx_passwd = config.get('INFLUXDB', 'influxdb_password') # influxdb login
 
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -183,7 +183,7 @@ while True:
 			     }
 			  ]
 		#### Publish data
-		client = InfluxDBClient(influx_server',influx_port, influx_user , influx_passwd , influx_db)
+		client = InfluxDBClient(influx_server,influx_port, influx_user , influx_passwd , influx_db)
 		# print DataJson
 		client.create_database (influx_db)
                 client.write_points (DataJson)
