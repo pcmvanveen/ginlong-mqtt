@@ -120,7 +120,7 @@ while True:
                 #msgs.append((mqtt_topic + "Vac3", vac3, 0, False))
 
 		##### Iac1
-                iac1 = float(int(hexdata[88:92],16))/10
+                iac1 = float(int(hexdata[90:94],16))/10
                 if __debug__:
                     print >>sys.stderr, 'iac1: ', iac1
                 msgs.append((mqtt_topic + "Iac1", iac1, 0, False))
@@ -136,13 +136,12 @@ while True:
                 #msgs.append((mqtt_topic + "Iac3", iac3, 0, False))
 
 		##### Pac
-                #pac = float(int(hexdata[136:140],16))/10
-		pac = (vpv1*ipv1+vpv2*ipv2)*0.975
+                pac = float(int(hexdata[118:122:140],16))/100
                 if __debug__:
                     print >>sys.stderr, 'pac: ', pac
                 msgs.append((mqtt_topic + "Pac", pac, 0, False))
 
-		##### Fac
+	        ##### Fac
                 fac = float(int(hexdata[114:118],16))/100
                 if __debug__:
                     print >>sys.stderr, 'fac: ', fac
@@ -154,7 +153,7 @@ while True:
                     print >>sys.stderr, 'temp: ', temp
                 msgs.append((mqtt_topic + "Temp", temp, 0, False))
 
-		##### kWh today Not confirmed yet
+		##### kWh today
                 kwhtoday = float(int(hexdata[138:142],16))/100
                 if __debug__:
                     print >>sys.stderr, 'kwhtoday: ', kwhtoday
@@ -173,7 +172,8 @@ while True:
 					"VoltagePv2":vpv2,
 					"CurrentPv1":ipv1,
 					"CurrentPv2":ipv2,
-					"MainVoltage":vac1,
+					"LineVoltage":vac1,
+					"LineCurrent":iac1,
 					"SolarPower":pac,
 					"Frequency":fac,
 					"Temperatuur":temp,
